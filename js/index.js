@@ -130,7 +130,7 @@ setTimeout(function() {
     callback: function() {} // call function after typing is done
   });
 }, 0);
-$(".progress-bar").loading();
+
 $('input').on('click', function() {
   $(".progress-bar").loading();
 });

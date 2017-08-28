@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Resume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=500, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="resources/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-  <link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style media="screen">
@@ -46,6 +46,7 @@ url('myFancyFont.eot');
 
 <body>
 
+
   <div id="particles-js">
 
 
@@ -53,15 +54,25 @@ url('myFancyFont.eot');
     <div id="name">
 
       <h1>Sanket Singh</h1>
-      <div class='element0' ></div>
+      <!-- <div class='element0' ></div> -->
+      <span
+     class="txt-rotate"
+     data-period="2000"
+     data-rotate='[ "Programmer.", "Developer.", "Engineer.", "Leader.", "Enthusiast" ,"Programmer-Developer-Engineer-Leader-Enthusiast"]'></span>
       <ul id="scene2" data-calibrate-x="false" data-calibrate-y="false" data-invert-x="false" data-invert-y="true" data-limit-x="false" data-limit-y="false" data-scalar-x="2" data-scalar-y="2" data-friction-x="0.1" data-friction-y="0.1" data-origin-x="0.0"
         data-origin-y="0.0">
-        <div class="icons layer" data-depth="0.6">
+        <div id="ii" class="icons layer" data-depth="0.6">
+          <div class="fir">
+
+
           <div class="ico"><a href="https://www.facebook.com/stonehrted"><i class="fa fa-facebook fa-2x git"></i></a></div>
           <div class="ico"><a href="https://github.com/singhsanket143"><i class="fa fa-github fa-2x git"></i></a></div>
-          <div class="ico"><a href="https://www.linkedin.com/in/sanket-singh-7b3653100/"><i class="fa fa-linkedin fa-2x twit"></i></a></div>
+          <div class="ico"><a href="https://www.linkedin.com/in/sanket-singh-7b3653100/"><i class="fa fa-linkedin fa-2x twit"></i></a></div>  </div>
+          <div id="sec">
+
+
           <div class="ico"><a href="https://singhsanket143@gmail.com"><i class="fa fa-envelope fa-2x mail" aria-hidden="true"></i></a></div>
-          <div class="ico"><a href="#" title="resume"><i class="fa fa-file-text fa-2x res"></i></a></div>
+          <div class="ico"><a href="#" title="resume"><i class="fa fa-file-text fa-2x res"></i></a></div></div>
         </div>
 
       </ul>
@@ -73,7 +84,76 @@ url('myFancyFont.eot');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
     <script src='js/rfhjs.js'></script>
+<script type="text/javascript">
+$(window).scroll(function(){
+    $('#particles-js').css({
+        'left': $(this).scrollLeft()
+         //Why this 15, because in the CSS, we have set left 15, so as we scroll, we would want this to remain at 15px left
+    });
+});
+$(window).scroll(function(){
+    $('#nnaavv').css({
+        'left': $(this).scrollLeft()
+         //Why this 15, because in the CSS, we have set left 15, so as we scroll, we would want this to remain at 15px left
+    });
+});
+var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
 
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+</script>
     <hr class="style-eight">
 
     </hr>
@@ -345,7 +425,7 @@ url('myFancyFont.eot');
         for (i = 0; i < dots.length; i++) {
           dots[i].className = dots[i].className.replace(" w3-white", "");
         }
-        x[slideIndex - 1].style.display = "block";
+        slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " w3-white";
       }
     </script>

@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   flex-flow: column;
 }
+
 #particles-js {
   position: absolute;
   width: 100%;
@@ -21,14 +22,24 @@ body {
   background-size: cover;
   background-position: 50% 50%;
   background-attachment: fixed;
+  right: 10px;
 }
 #name h1{
   position: absolute;
   font-size: 100px;
   font-family: 'myFancyFont', Times, serif;
   color: #f1f1f1;
-  top: 250px;
+  top: 150px;
   left: 190px;
+}
+#name span{
+  position: absolute;
+
+  font-family: 'myFancyFont', Times, serif;
+  font-size: 50px;
+  color: #f1f1f1;
+  top: 130px;
+  left: 100px;
 }
 @media only screen and (max-width: 920px){
   #name h1{
@@ -39,11 +50,16 @@ body {
     top: 150px;
     left: 50px;
   }
-  #name .element0{
-    left: 50px;
+  #name span{
+    left: 28px;
     font-size: 30px;
-    top: 250px;
+    top: 110px;
   }
+  #ii{
+
+    left: 20px;
+  }
+  
 }
 
 .element0{
